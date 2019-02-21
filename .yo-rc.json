@@ -26,13 +26,13 @@
         "clientFramework": "angularX",
         "useSass": true,
         "clientPackageManager": "npm",
-        "testFrameworks": [],
+        "testFrameworks": ["protractor"],
         "jhiPrefix": "jhi",
         "entitySuffix": "",
         "dtoSuffix": "DTO",
         "otherModules": [],
         "enableTranslation": true,
         "nativeLanguage": "en",
-        "languages": ["en"]
+        "languages": ["en", "de"]
     }
 }
