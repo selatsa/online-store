@@ -33,14 +33,14 @@
             "relationshipType": "many-to-one",
             "relationshipName": "product",
             "otherEntityName": "product",
-            "otherEntityField": "id",
+            "otherEntityField": "name",
             "otherEntityRelationshipName": "orderItem"
         },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "order",
             "otherEntityName": "productOrder",
-            "otherEntityField": "id",
+            "otherEntityField": "code",
             "otherEntityRelationshipName": "orderItem"
         }
     ],
