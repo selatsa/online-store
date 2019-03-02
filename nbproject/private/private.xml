@@ -3,29 +3,57 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/WebsocketConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/domain/User.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/content/scss/global.scss</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/StoreApp.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/.jhipster/Product.json</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/CacheConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/account/account.route.ts</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/LiquibaseConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/repository/UserRepository.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/AsyncConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/SecurityConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/vendor.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/service/MailService.java</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/docker/Dockerfile</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/blocks/config/prod.config.ts</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/app.main.ts</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/build.gradle</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/polyfills.ts</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/WebsocketSecurityConfiguration.java</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/app.module.ts</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/resources/i18n/messages_en.properties</file>
-            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/ApplicationProperties.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/web/rest/ProductResource.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product/product.route.ts</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/Constants.java</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/webpack/webpack.dev.js</file>
             <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/resources/i18n/messages_de.properties</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/service/ProductOrderService.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/layouts/navbar/navbar.component.html</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/shared/model/product.model.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/domain/Product.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/SecurityConfiguration.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product/product.component.html</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/order-item/order-item.service.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/app.main.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/build.gradle</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/shared/model/shipment.model.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/customer/customer.service.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/home/home.route.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/ApplicationProperties.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product/product.component.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/repository/ProductRepository.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product/product.service.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/WebsocketConfiguration.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/app.constants.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/content/scss/global.scss</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/entity.module.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/shared/index.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/home/index.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product-order/product-order.service.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/web/rest/ShipmentResource.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/shared/model/region.model.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/WebsocketSecurityConfiguration.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/home/home.component.html</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/home/home.component.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/layouts/navbar/navbar.scss</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/domain/User.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/webpack/utils.js</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/entities/product/product.module.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/StoreApp.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/web/rest/OrderItemResource.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/repository/UserRepository.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/home/home.module.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/layouts/navbar/navbar.route.ts</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/config/AsyncConfiguration.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/java/com/sonacode/store/service/ProductService.java</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/resources/i18n/messages_en.properties</file>
+            <file>file:/C:/dev/project/jhipster/e-commerce-app/online-store/src/main/webapp/app/layouts/navbar/navbar.component.ts</file>
         </group>
     </open-files>
 </project-private>

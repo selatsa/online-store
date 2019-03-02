@@ -2,25 +2,25 @@
     "storeApp": {
         "product": {
             "home": {
-                "title": "Products",
-                "createLabel": "Product erstellen",
-                "createOrEditLabel": "Product erstellen oder bearbeiten"
+                "title": "Produkte",
+                "createLabel": "Produkt erstellen",
+                "createOrEditLabel": "Produkt erstellen oder bearbeiten"
             },
-            "created": "Product erstellt mit ID {{ param }}",
-            "updated": "Product aktualisiert mit ID {{ param }}",
-            "deleted": "Product gelöscht mit ID {{ param }}",
+            "created": "Produkt erstellt mit ID {{ param }}",
+            "updated": "Produkt aktualisiert mit ID {{ param }}",
+            "deleted": "Produkt gelöscht mit ID {{ param }}",
             "delete": {
-                "question": "Soll Product {{ id }} wirklich dauerhaft gelöscht werden?"
+                "question": "Soll Produkt {{ id }} wirklich dauerhaft gelöscht werden?"
             },
             "detail": {
-                "title": "Product"
+                "title": "Produkt"
             },
             "name": "Name",
-            "description": "Description",
-            "price": "Price",
-            "size": "Size",
-            "image": "Image",
-            "productCategory": "Product Category"
+            "description": "Beschreibung",
+            "price": "Preis",
+            "size": "Größe",
+            "image": "Bild",
+            "productCategory": "Produkt Kategorie"
         }
     }
 }
