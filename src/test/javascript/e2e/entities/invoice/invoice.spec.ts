@@ -46,12 +46,14 @@ describe('Invoice e2e test', () => {
             invoiceUpdatePage.paymentMethodSelectLastOption(),
             invoiceUpdatePage.setPaymentDateInput('01/01/2001' + protractor.Key.TAB + '02:30AM'),
             invoiceUpdatePage.setPaymentAmountInput('5'),
+            invoiceUpdatePage.setCodeInput('code'),
             invoiceUpdatePage.orderSelectLastOption()
         ]);
         expect(await invoiceUpdatePage.getDateInput()).to.contain('2001-01-01T02:30');
         expect(await invoiceUpdatePage.getDetailsInput()).to.eq('details');
         expect(await invoiceUpdatePage.getPaymentDateInput()).to.contain('2001-01-01T02:30');
         expect(await invoiceUpdatePage.getPaymentAmountInput()).to.eq('5');
+        expect(await invoiceUpdatePage.getCodeInput()).to.eq('code');
         await invoiceUpdatePage.save();
         expect(await invoiceUpdatePage.getSaveButton().isPresent()).to.be.false;
 

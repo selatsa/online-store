@@ -1,210 +1,180 @@
+// JDL definition for application 'store' generated with command 'jhipster export-jdl'
+
 entity Region {
-	regionName String
+  regionName String
 }
-
 entity Country {
-	countryName String
+  countryName String
 }
-
-// an ignored comment
-/** not an ignored comment */
+/**
+ * not an ignored comment
+ */
 entity Location {
-	streetAddress String,
-	postalCode String,
-	city String,
-	stateProvince String
+  streetAddress String,
+  postalCode String,
+  city String,
+  stateProvince String
 }
-
 entity Department {
-	departmentName String required
+  departmentName String required
 }
-
 /**
  * Task entity.
  * @author The JHipster team.
  */
 entity Task {
-	title String,
-	description String
+  title String,
+  description String
 }
-
 /**
  * The Employee entity.
  */
 entity Employee {
-	/**
-	* The firstname attribute.
-	*/
-	firstName String,
-	lastName String,
-	email String,
-	phoneNumber String,
-	hireDate Instant,
-	salary Long,
-	commissionPct Long
+  /**
+   * The firstname attribute.
+   */
+  firstName String,
+  lastName String,
+  email String,
+  phoneNumber String,
+  hireDate Instant,
+  salary Long,
+  commissionPct Long
 }
-
 entity Job {
-	jobTitle String,
-	minSalary Long,
-	maxSalary Long
+  jobTitle String,
+  minSalary Long,
+  maxSalary Long
 }
-
 entity JobHistory {
-	startDate Instant,
-	endDate Instant,
-	language Language
+  startDate Instant,
+  endDate Instant,
+  language Language
+}
+/**
+ * Product sold by the online store
+ */
+entity Product {
+  name String required,
+  description String,
+  price BigDecimal required min(0),
+  size Size required,
+  image ImageBlob
+}
+entity ProductCategory {
+  name String required,
+  description String
+}
+entity Customer {
+  firstName String required,
+  lastName String required,
+  gender Gender required,
+  email String required pattern(/^[^@\s]+@[^\s]+\.[^@\s]+$/),
+  phone String required,
+  addressLine1 String required,
+  addressLine2 String,
+  city String required,
+  country String required
+}
+entity ProductOrder {
+  placedDate Instant required,
+  status OrderStatus required,
+  code String required
+}
+entity OrderItem {
+  quantity Integer required min(0),
+  totalPrice BigDecimal required min(0),
+  status OrderItemStatus required
+}
+entity Invoice {
+  date Instant required,
+  details String,
+  status InvoiceStatus required,
+  paymentMethod PaymentMethod required,
+  paymentDate Instant required,
+  paymentAmount BigDecimal required,
+  code String required
+}
+entity Shipment {
+  trackingCode String,
+  date Instant required,
+  details String
 }
 
 enum Language {
-    FRENCH, ENGLISH, SPANISH
-}
-
-relationship OneToOne {
-	Country{region} to Region
-}
-
-relationship OneToOne {
-	Location{country} to Country
-}
-
-relationship OneToOne {
-	Department{location} to Location
-}
-
-relationship ManyToMany {
-	Job{task(title)} to Task{job}
-}
-
-// defining multiple OneToMany relationships with comments
-relationship OneToMany {
-	Employee{job} to Job,
-	/**
-	* A relationship
-	*/
-	Department{employee} to
-	/**
-	* Another side of the same relationship
-	*/
-	Employee
-}
-
-/** Product sold by the online store */
-entity Product {
-	name String required
-    description String
-    price BigDecimal required min(0)
-    size Size required
-    image ImageBlob
+  FRENCH,
+  ENGLISH,
+  SPANISH
 }
 
 enum Size {
-	S, M, L, XL, XXL 
-}
-
-entity ProductCategory {
-	name String required
-    description String
-}
-
-entity Customer {
-	firstName String required
-    lastName String required
-    gender Gender required
-    email String required pattern(/^[^@\s]+@[^\s]+\.[^@\s]+$/)
-    phone String required
-    addressLine1 String required
-    addressLine2 String
-    city String required
-    country String required
+  S,
+  M,
+  L,
+  XL,
+  XXL
 }
 
 enum Gender {
-	MALE, FEMALE, OTHER
-}
-
-entity ProductOrder {
-	placedDate Instant required
-    status OrderStatus required
-    code String required
+  MALE,
+  FEMALE,
+  OTHER
 }
 
 enum OrderStatus {
-	COMPLETED, PENDING, CANCELLED
-}
-
-entity OrderItem {
-	quantity Integer required min(0)
-    totalPrice BigDecimal required min(0)
-    status OrderItemStatus required
+  COMPLETED,
+  PENDING,
+  CANCELLED
 }
 
 enum OrderItemStatus {
-	AVAILABLE, OUT_OF_STOCK, BACK_ORDER
-}
-
-entity Invoice {
-	date Instant required
-	details String
-	status InvoiceStatus required
-    paymentMethod PaymentMethod required
-    paymentDate Instant required
-    paymentAmount BigDecimal required
+  AVAILABLE,
+  OUT_OF_STOCK,
+  BACK_ORDER
 }
 
 enum InvoiceStatus {
-	PAID, ISSUED, CANCELLED
+  PAID,
+  ISSUED,
+  CANCELLED
 }
 
 enum PaymentMethod {
-	CREDIT_CARD, CASH_ON_DELIVERY, PAYPAL
-}
-
-entity Shipment {
-	trackingCode String
-    date Instant required
-    details String
-}
-
-relationship ManyToOne {
-	Employee{manager} to Employee
-}
-
-// defining multiple oneToOne relationships
-relationship OneToOne {
-	JobHistory{job} to Job,
-	JobHistory{department} to Department,
-	JobHistory{employee} to Employee
+  CREDIT_CARD,
+  CASH_ON_DELIVERY,
+  PAYPAL
 }
 
 relationship OneToOne {
-	Customer{user} to User
+  Country{region} to Region,
+  Location{country} to Country,
+  Department{location} to Location,
+  JobHistory{job} to Job,
+  JobHistory{department} to Department,
+  JobHistory{employee} to Employee,
+  Customer{user(login)} to User
 }
-
-relationship ManyToOne {
-	OrderItem{product} to Product
-}
-
 relationship OneToMany {
-	Customer{order} to ProductOrder{customer}
-    ProductOrder{orderItem} to OrderItem{order}
-    ProductOrder{invoice} to Invoice{order}
-    Invoice{shipment} to Shipment{invoice}
-    ProductCategory{product} to Product{productCategory}
+  /**
+   * A relationship
+   */
+  Department{employee} to Employee{department},
+  Employee{job} to Job{employee},
+  ProductCategory{product} to Product{productCategory(name)},
+  Customer{order} to ProductOrder{customer(email) required},
+  ProductOrder{orderItem} to OrderItem{order(code) required},
+  ProductOrder{invoice} to Invoice{order(code) required},
+  Invoice{shipment} to Shipment{invoice(code) required}
+}
+relationship ManyToOne {
+  Employee{manager} to Employee,
+  OrderItem{product(name)} to Product
+}
+relationship ManyToMany {
+  Job{task(title)} to Task{job}
 }
 
-service * with serviceClass
-paginate Product, Customer, ProductOrder, Invoice, Shipment, OrderItem with pagination
-
-// Set pagination options
-paginate JobHistory, Employee with infinite-scroll
-paginate Job with pagination
-
-// Use Data Transfert Objects (DTO)
-// dto * with mapstruct
-
-// Set service options to all except few
-service all with serviceImpl except Employee, Job
-
-// Set an angular suffix
-// angularSuffix * with mySuffix
+service Region, Country, Location, Department, Task, JobHistory, Product, ProductCategory, Customer, ProductOrder, OrderItem, Invoice, Shipment with serviceImpl
+service Employee, Job with serviceClass
+paginate Employee, JobHistory with infinite-scroll
+paginate Job, Product, Customer, ProductOrder, OrderItem, Invoice, Shipment with pagination

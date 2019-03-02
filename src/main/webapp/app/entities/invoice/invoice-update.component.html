@@ -91,12 +91,17 @@
                         </small>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="storeApp.invoice.code" for="field_code">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="invoice.code" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="storeApp.invoice.order" for="field_order">Order</label>
                     <select class="form-control" id="field_order" name="order" [(ngModel)]="invoice.order" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="productOrderOption.id === invoice.order?.id ? invoice.order : productOrderOption" *ngFor="let productOrderOption of productorders; trackBy: trackProductOrderById">{{productOrderOption.id}}</option>
+                        <option [ngValue]="productOrderOption.id === invoice.order?.id ? invoice.order : productOrderOption" *ngFor="let productOrderOption of productorders; trackBy: trackProductOrderById">{{productOrderOption.code}}</option>
                     </select>
                 </div>
             </div>

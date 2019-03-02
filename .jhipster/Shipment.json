@@ -22,7 +22,7 @@
             "relationshipType": "many-to-one",
             "relationshipName": "invoice",
             "otherEntityName": "invoice",
-            "otherEntityField": "id",
+            "otherEntityField": "code",
             "otherEntityRelationshipName": "shipment"
         }
     ],

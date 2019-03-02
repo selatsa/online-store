@@ -25,7 +25,7 @@ describe('Service Tests', () => {
             httpMock = injector.get(HttpTestingController);
             currentDate = moment();
 
-            elemDefault = new Invoice(0, currentDate, 'AAAAAAA', InvoiceStatus.PAID, PaymentMethod.CREDIT_CARD, currentDate, 0);
+            elemDefault = new Invoice(0, currentDate, 'AAAAAAA', InvoiceStatus.PAID, PaymentMethod.CREDIT_CARD, currentDate, 0, 'AAAAAAA');
         });
 
         describe('Service methods', async () => {
@@ -78,7 +78,8 @@ describe('Service Tests', () => {
                         status: 'BBBBBB',
                         paymentMethod: 'BBBBBB',
                         paymentDate: currentDate.format(DATE_TIME_FORMAT),
-                        paymentAmount: 1
+                        paymentAmount: 1,
+                        code: 'BBBBBB'
                     },
                     elemDefault
                 );
@@ -106,7 +107,8 @@ describe('Service Tests', () => {
                         status: 'BBBBBB',
                         paymentMethod: 'BBBBBB',
                         paymentDate: currentDate.format(DATE_TIME_FORMAT),
-                        paymentAmount: 1
+                        paymentAmount: 1,
+                        code: 'BBBBBB'
                     },
                     elemDefault
                 );
