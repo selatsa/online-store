@@ -35,6 +35,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.sonacode.store.domain.enumeration.OrderStatus;
+
+import org.springframework.security.test.context.support.WithMockUser;
+
 /**
  * Test class for the ProductOrderResource REST controller.
  *
@@ -42,6 +45,7 @@ import com.sonacode.store.domain.enumeration.OrderStatus;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities={"ROLE_ADMIN"}, password="admin")
 public class ProductOrderResourceIntTest {
 
     private static final Instant DEFAULT_PLACED_DATE = Instant.ofEpochMilli(0L);

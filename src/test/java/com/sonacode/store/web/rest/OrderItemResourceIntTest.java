@@ -34,6 +34,9 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.sonacode.store.domain.enumeration.OrderItemStatus;
+
+import org.springframework.security.test.context.support.WithMockUser;
+
 /**
  * Test class for the OrderItemResource REST controller.
  *
@@ -41,6 +44,7 @@ import com.sonacode.store.domain.enumeration.OrderItemStatus;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities={"ROLE_ADMIN"}, password="admin")
 public class OrderItemResourceIntTest {
 
     private static final Integer DEFAULT_QUANTITY = 0;

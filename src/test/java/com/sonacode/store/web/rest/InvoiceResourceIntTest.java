@@ -35,6 +35,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import org.springframework.security.test.context.support.WithMockUser;
+
 import com.sonacode.store.domain.enumeration.InvoiceStatus;
 import com.sonacode.store.domain.enumeration.PaymentMethod;
 /**
@@ -44,6 +46,7 @@ import com.sonacode.store.domain.enumeration.PaymentMethod;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities={"ROLE_ADMIN"}, password="admin")
 public class InvoiceResourceIntTest {
 
     private static final Instant DEFAULT_DATE = Instant.ofEpochMilli(0L);
