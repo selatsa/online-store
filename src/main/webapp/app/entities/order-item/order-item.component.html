@@ -1,7 +1,7 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="storeApp.orderItem.home.title">Order Items</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-order-item" [routerLink]="['/order-item/new']">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-order-item" [routerLink]="['/order-item/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
             <span  jhiTranslate="storeApp.orderItem.home.createLabel">
             Create new Order Item
@@ -47,13 +47,13 @@
                             <fa-icon [icon]="'eye'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/order-item', orderItem.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/', 'order-item', { outlets: { popup: orderItem.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"

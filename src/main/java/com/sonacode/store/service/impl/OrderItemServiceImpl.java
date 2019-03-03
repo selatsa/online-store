@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import com.sonacode.store.security.SecurityUtils;
+import com.sonacode.store.security.AuthoritiesConstants;
+
 /**
  * Service Implementation for managing OrderItem.
  */
@@ -46,14 +49,24 @@ public class OrderItemServiceImpl implements OrderItemService {
      * @param pageable the pagination information
      * @return the list of entities
      */
+
     @Override
     @Transactional(readOnly = true)
     public Page<OrderItem> findAll(Pageable pageable) {
         log.debug("Request to get all OrderItems");
-        return orderItemRepository.findAll(pageable);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return orderItemRepository.findAll(pageable);
+        } else {
+            return orderItemRepository.findAllByOrderCustomerUserLogin(SecurityUtils.getCurrentUserLogin().get(), pageable);
+        }
     }
 
-
+    @Override
+    @Transactional(readOnly = true)
+    public Page<OrderItem> findAllByOrderCustomerUserLogin(String login, Pageable pageable) {
+        log.debug("Request to get all Invoices by user login");
+        return orderItemRepository.findAllByOrderCustomerUserLogin(login, pageable);
+    }
     /**
      * Get one orderItem by id.
      *
@@ -64,9 +77,19 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Transactional(readOnly = true)
     public Optional<OrderItem> findOne(Long id) {
         log.debug("Request to get OrderItem : {}", id);
-        return orderItemRepository.findById(id);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return orderItemRepository.findById(id);
+        } else {
+            return orderItemRepository.findOneByIdAndOrderCustomerUserLogin(id, SecurityUtils.getCurrentUserLogin().get() );
+        }
     }
-
+ 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<OrderItem> findOneByIdAndOrderCustomerUserLogin(Long id, String login) {
+        log.debug("Request to get OrderItem for login user : {}", id);
+        return orderItemRepository.findOneByIdAndOrderCustomerUserLogin(id, login );
+    }
     /**
      * Delete the orderItem by id.
      *

@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import com.sonacode.store.security.SecurityUtils;
+import com.sonacode.store.security.AuthoritiesConstants;
+
 /**
  * Service Implementation for managing Shipment.
  */
@@ -46,13 +49,24 @@ public class ShipmentServiceImpl implements ShipmentService {
      * @param pageable the pagination information
      * @return the list of entities
      */
+
     @Override
     @Transactional(readOnly = true)
     public Page<Shipment> findAll(Pageable pageable) {
-        log.debug("Request to get all Shipments");
-        return shipmentRepository.findAll(pageable);
+        log.debug("Request to get all Shipmnents");
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return shipmentRepository.findAll(pageable);
+        } else {
+            return shipmentRepository.findAllByInvoiceOrderCustomerUserLogin(SecurityUtils.getCurrentUserLogin().get(), pageable);
+        }
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Shipment> findAllByShipmentCustomerUserLogin(String login, Pageable pageable) {
+        log.debug("Request to get all Shipmnents by user login");
+        return shipmentRepository.findAllByInvoiceOrderCustomerUserLogin(login, pageable);
+    }
 
     /**
      * Get one shipment by id.
@@ -64,7 +78,18 @@ public class ShipmentServiceImpl implements ShipmentService {
     @Transactional(readOnly = true)
     public Optional<Shipment> findOne(Long id) {
         log.debug("Request to get Shipment : {}", id);
-        return shipmentRepository.findById(id);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return shipmentRepository.findById(id);
+        } else {
+            return shipmentRepository.findOneByIdAndInvoiceOrderCustomerUserLogin(id, SecurityUtils.getCurrentUserLogin().get() );
+        }
+    }
+ 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Shipment> findOneByIdAndShipmentCustomerUserLogin(Long id, String login) {
+        log.debug("Request to get Shipment for login user : {}", id);
+        return shipmentRepository.findOneByIdAndInvoiceOrderCustomerUserLogin(id, login );
     }
 
     /**

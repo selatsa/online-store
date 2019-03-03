@@ -13,6 +13,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -46,6 +47,7 @@ public class ShipmentResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/shipments")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Shipment> createShipment(@Valid @RequestBody Shipment shipment) throws URISyntaxException {
         log.debug("REST request to save Shipment : {}", shipment);
         if (shipment.getId() != null) {
@@ -67,6 +69,7 @@ public class ShipmentResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/shipments")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Shipment> updateShipment(@Valid @RequestBody Shipment shipment) throws URISyntaxException {
         log.debug("REST request to update Shipment : {}", shipment);
         if (shipment.getId() == null) {
@@ -112,6 +115,7 @@ public class ShipmentResource {
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/shipments/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public ResponseEntity<Void> deleteShipment(@PathVariable Long id) {
         log.debug("REST request to delete Shipment : {}", id);
         shipmentService.delete(id);

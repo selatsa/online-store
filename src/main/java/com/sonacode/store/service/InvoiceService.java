@@ -28,14 +28,16 @@ public interface InvoiceService {
      */
     Page<Invoice> findAll(Pageable pageable);
 
-
-    /**
+    Page<Invoice> findAllByOrderCustomerUserLogin(String login, Pageable pageable);
+        /**
      * Get the "id" invoice.
      *
      * @param id the id of the entity
      * @return the entity
      */
     Optional<Invoice> findOne(Long id);
+    
+    Optional<Invoice> findOneByIdAndOrderCustomerUserLogin(Long id, String login);
 
     /**
      * Delete the "id" invoice.

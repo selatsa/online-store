@@ -28,7 +28,8 @@ public interface OrderItemService {
      */
     Page<OrderItem> findAll(Pageable pageable);
 
-
+    Page<OrderItem> findAllByOrderCustomerUserLogin(String login, Pageable pageable);
+    
     /**
      * Get the "id" orderItem.
      *
@@ -36,6 +37,8 @@ public interface OrderItemService {
      * @return the entity
      */
     Optional<OrderItem> findOne(Long id);
+    
+    Optional<OrderItem> findOneByIdAndOrderCustomerUserLogin(Long id, String login);
 
     /**
      * Delete the "id" orderItem.

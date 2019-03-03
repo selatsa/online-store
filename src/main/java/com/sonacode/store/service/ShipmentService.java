@@ -28,7 +28,8 @@ public interface ShipmentService {
      */
     Page<Shipment> findAll(Pageable pageable);
 
-
+    Page<Shipment> findAllByShipmentCustomerUserLogin(String login, Pageable pageable);
+    
     /**
      * Get the "id" shipment.
      *
@@ -36,6 +37,8 @@ public interface ShipmentService {
      * @return the entity
      */
     Optional<Shipment> findOne(Long id);
+    
+    Optional<Shipment> findOneByIdAndShipmentCustomerUserLogin(Long id, String login);
 
     /**
      * Delete the "id" shipment.

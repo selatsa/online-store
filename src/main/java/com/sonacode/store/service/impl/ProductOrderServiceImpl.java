@@ -9,7 +9,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import com.sonacode.store.security.AuthoritiesConstants;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.sonacode.store.security.SecurityUtils;
 
 import java.util.Optional;
 
@@ -50,10 +53,20 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     @Transactional(readOnly = true)
     public Page<ProductOrder> findAll(Pageable pageable) {
         log.debug("Request to get all ProductOrders");
-        return productOrderRepository.findAll(pageable);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return productOrderRepository.findAll(pageable);
+        } else {
+            return productOrderRepository.findAllByCustomerUserLogin(SecurityUtils.getCurrentUserLogin().get(), pageable);
+        }
     }
-
-
+    
+    @Override
+    @Transactional(readOnly = true)
+    public Page<ProductOrder> findAllByCustomerUserLogin(String login, Pageable pageable) {
+        log.debug("Request to get all ProductOrders by user login");
+        return productOrderRepository.findAllByCustomerUserLogin(login, pageable);
+    }
+      
     /**
      * Get one productOrder by id.
      *
@@ -64,9 +77,19 @@ public class ProductOrderServiceImpl implements ProductOrderService {
     @Transactional(readOnly = true)
     public Optional<ProductOrder> findOne(Long id) {
         log.debug("Request to get ProductOrder : {}", id);
-        return productOrderRepository.findById(id);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return productOrderRepository.findById(id);
+        } else {
+            return productOrderRepository.findOneByIdAndCustomerUserLogin(id, SecurityUtils.getCurrentUserLogin().get() );
+        }
     }
-
+ 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<ProductOrder> findOneByIdAndOrderCustomerUserLogin(Long id, String login) {
+        log.debug("Request to get ProductOrder for login user : {}", id);
+        return productOrderRepository.findOneByIdAndCustomerUserLogin(id, login );
+    }
     /**
      * Delete the productOrder by id.
      *
@@ -74,6 +97,7 @@ public class ProductOrderServiceImpl implements ProductOrderService {
      */
     @Override
     public void delete(Long id) {
-        log.debug("Request to delete ProductOrder : {}", id);        productOrderRepository.deleteById(id);
+        log.debug("Request to delete ProductOrder : {}", id);        
+        productOrderRepository.deleteById(id);
     }
 }

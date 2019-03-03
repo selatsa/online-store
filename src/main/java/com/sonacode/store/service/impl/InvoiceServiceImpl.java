@@ -13,6 +13,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+import com.sonacode.store.security.SecurityUtils;
+import com.sonacode.store.security.AuthoritiesConstants;
+
 /**
  * Service Implementation for managing Invoice.
  */
@@ -50,10 +53,19 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Transactional(readOnly = true)
     public Page<Invoice> findAll(Pageable pageable) {
         log.debug("Request to get all Invoices");
-        return invoiceRepository.findAll(pageable);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return invoiceRepository.findAll(pageable);
+        } else {
+            return invoiceRepository.findAllByOrderCustomerUserLogin(SecurityUtils.getCurrentUserLogin().get(), pageable);
+        }
     }
 
-
+    @Override
+    @Transactional(readOnly = true)
+    public Page<Invoice> findAllByOrderCustomerUserLogin(String login, Pageable pageable) {
+        log.debug("Request to get all Invoices by user login");
+        return invoiceRepository.findAllByOrderCustomerUserLogin(login, pageable);
+    }
     /**
      * Get one invoice by id.
      *
@@ -64,9 +76,19 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Transactional(readOnly = true)
     public Optional<Invoice> findOne(Long id) {
         log.debug("Request to get Invoice : {}", id);
-        return invoiceRepository.findById(id);
+        if (SecurityUtils.isCurrentUserInRole(AuthoritiesConstants.ADMIN)) {
+            return invoiceRepository.findById(id);
+        } else {
+            return invoiceRepository.findOneByIdAndOrderCustomerUserLogin(id, SecurityUtils.getCurrentUserLogin().get() );
+        }
     }
-
+ 
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Invoice> findOneByIdAndOrderCustomerUserLogin(Long id, String login) {
+        log.debug("Request to get Invoice for login user : {}", id);
+        return invoiceRepository.findOneByIdAndOrderCustomerUserLogin(id, login );
+    }
     /**
      * Delete the invoice by id.
      *
